@@ -1,35 +1,96 @@
-# Touchless Virtual Library
+📚 Touchless Virtual Library
 
-Touchless Virtual Library is a computer vision–based digital reading system that allows users to interact with books using only hand gestures and head movements. The main goal of this project is to create a natural, touch-free interaction system without using a keyboard or mouse.
+A Gesture Controlled Reading Interface using Computer Vision
 
-The system is developed using Python, OpenCV, and MediaPipe. OpenCV is used for real-time video capture, UI rendering, and frame processing. MediaPipe is used for detecting hand landmarks (21 points) and face mesh landmarks (468 points). NumPy is used for mathematical calculations such as distance measurement and angle computation.
+This project demonstrates a touchless digital reading interface where users can interact with books using hand gestures and head movements instead of a keyboard or mouse.
 
-The application works in real time using a continuous frame processing loop. Each frame from the webcam is captured, converted from BGR to RGB for MediaPipe compatibility, processed for hand and face detection, and then updated on the interface instantly.
+The system uses MediaPipe and OpenCV to detect hand and face landmarks in real time and convert them into actions like selecting books, zooming text, highlighting lines, and flipping pages.
 
-Main Functionalities:
+⸻
 
-• Hand-Controlled Cursor  
-The index fingertip position is tracked to create a smooth virtual cursor. Exponential smoothing is applied to reduce jitter and make movement stable.
+🧠 Key Features
 
-• Book Selection (Hover + Hold)  
-When the cursor hovers over a book cover, a highlight appears. If the cursor remains there for a few frames, the book opens. This prevents accidental selection.
+🖐 Hand Gesture Navigation
 
-• Reading Mode  
-Once a book is selected, the system loads text from a file, cleans unwanted characters, splits the content into word-based pages, and displays it dynamically.
+MediaPipe detects 21 hand landmarks and tracks the index finger to act as a virtual cursor.
 
-• Pinch to Zoom  
-The distance between the thumb tip and index fingertip is calculated using the Euclidean distance formula. When the distance falls below a threshold, the text size increases. A control mechanism prevents repeated triggering.
+📖 Hover Based Book Selection
 
-• Head Tilt Page Navigation  
-The system calculates the angle between the left and right eye landmarks using arctan2. If the tilt exceeds a threshold angle, the page changes accordingly.
+Users can hover the cursor over a book cover for a short duration to open the book.
 
-• Edge-Based Page Flip  
-Moving the cursor to the extreme left or right side of the screen triggers page navigation. Cooldown timers are used to prevent multiple rapid page flips.
+🔍 Pinch Gesture Zoom
 
-• Fist Gesture for Back Navigation  
-When all fingers are detected as closed, the system returns to the main menu.
+Zoom functionality is implemented by calculating the distance between thumb and index finger.
 
-• Sound Feedback  
-A page-flipping sound is played asynchronously during navigation to improve user experience without blocking execution.
+✨ Dynamic Text Highlighting
 
-This project demonstrates how computer vision and gesture recognition can be integrated to build intuitive, real-time human-computer interaction systems. It explores practical applications of landmark detection, gesture logic, UI rendering, and state-based system design.
+When the cursor moves over text lines, the system highlights the corresponding line for better readability.
+
+↔ Edge Based Page Navigation
+
+Moving the cursor to the left or right edge of the screen flips pages.
+
+🧠 Head Tilt Navigation
+
+Using MediaPipe FaceMesh, head tilt is detected to trigger page navigation.
+
+🔊 Interactive Feedback
+
+A page flip sound is played during page transitions to simulate a realistic reading experience.
+
+⸻
+
+🛠 Technologies Used
+	•	Python
+	•	OpenCV
+	•	MediaPipe
+	•	NumPy
+
+ 📂 Project Structure
+ Touchless-Virtual-Library
+│
+├── project.py                # Main program file
+├── requirements.txt          # Required Python libraries
+├── README.md                 # Project documentation
+│
+├── page.wav                  # Page flip sound effect
+│
+├── pride.jpg                 # Book cover image
+├── prideandprejudice.txt     # Book text
+│
+├── dracula.jpg
+├── Dracula.txt
+│
+├── alice.jpg
+├── aliceinwonderland.txt
+│
+├── sherlock.jpg
+├── sherlockholmes.txt
+│
+├── Frank.jpg
+├── Frankenstein.txt
+
+▶ How to Run the Project
+
+1️⃣ Install dependencies
+pip install -r requirements.txt
+
+2️⃣ Run the program
+python project.py
+
+The webcam will start and the gesture-controlled interface will launch.
+
+💡 What I Learned
+	•	Real-time computer vision pipelines
+	•	Hand landmark based gesture recognition
+	•	Gesture-based human-computer interaction
+	•	Building interactive UI systems without traditional input devices
+
+⸻
+
+🔗 Author
+
+Aleena Wilson
+Data Science Trainee | Python | Computer Vision
+
+  
